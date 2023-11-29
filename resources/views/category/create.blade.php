@@ -12,7 +12,7 @@
     </div>
 @endif
 
-<form action="{{ url('/save-record') }}" method="POST">
+<form action="{{ url('/save-record') }}" method="POST" enctype="multipart/form-data">
 
     <h4> Create new category </h4>
 
@@ -26,8 +26,15 @@
             <label> Description: </label>
             <input type="text" name="description" id="description" class="form-control">
         </div>
+
+        <div class="form col-md-4">
+            <label for="image">Image:</label>
+            <input type="file" name="image" id="image" class="form-control">
+        </div>
     </div>
     <button class="btn btn-sm btn-success" type="submit"> Save Record </button>
 </form>
+
+
 
 @endsection

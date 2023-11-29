@@ -25,14 +25,18 @@ class CategoryController extends Controller
     public function save(Request $request)
     {
         $this->validate(request(), [
-            'name'=> 'required|min:1|max:255',
-            'description'=> 'required|min:1|max:255',
+            'name' => 'required|min:1|max:255',
+            'description' => 'required|min:1|max:255',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);  
+
+        $fileName = time() . '.' . $request->image->extension();
+        $request->image->storeAs('public/category', $fileName);
 
         $category = new Category;
         $category->name = $request->name;
         $category->description = $request->description;
-        
+        $category->image = $fileName;
         $category->save();
 
         return redirect('/category')->with('status', 'New Catagory Saved.');

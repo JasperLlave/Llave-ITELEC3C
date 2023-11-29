@@ -2,7 +2,7 @@
 
 @section('content')
 <h4> {{ $item->name }} details: </h4>
-
+<img src="{{ asset('storage/category/'.$item->image) }}">
 <p> Name: {{ $item->name }} </p>
 <p> Description: {{ $item->description }} </p>
 <p> Created At: {{ $item->created_at }} </p>
